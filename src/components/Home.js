@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Row, Col } from 'reactstrap';
 
 //CSS
 import '../css/home.css';
@@ -55,24 +56,28 @@ const Home = () => {
     }, [searchTerm, filteredBooks]);
 
     return (
-        <div>
+        <div className='container'>
             <h1 className='text-middle'>Search any book you want</h1>
             <div>
                 <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-                <p className='text-middle'><span className='bold-text'>{totalMatches} posts </span> where found</p>
+                <p className='text-middle'><span className='bold-text'>{totalMatches} posts </span> were found</p>
                 {filteredBooks.length > 0 ? (
-                    filteredBooks.map(book => (
-                        <div key={book.id} style={{ marginBottom: "20px" }}>
-                            <h2>{highlightSearchTerm(book.title, searchTerm)}</h2>
-                            <p>{highlightSearchTerm(book.content, searchTerm)}</p>
-                        </div>
-                    ))
+                    <Row>
+                        {filteredBooks.map(book => (
+                            <Col key={book.id} xs="12" md="6" lg="4">
+                                <div className='card-container'>
+                                    <h2>{highlightSearchTerm(book.title, searchTerm)}</h2>
+                                    <p>{highlightSearchTerm(book.content, searchTerm)}</p>
+                                </div>
+                            </Col>
+                        ))}
+                    </Row>
                 ) : (
-                    <p>No Book Found</p>
+                    <p className='text-middle'>No Book Found</p>
                 )}
             </div>
         </div>
-    )
+    );
 }
 
 export default Home
