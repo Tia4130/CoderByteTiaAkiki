@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "title": "Atomic Habits",
+        "content": "This book is a powerful guide to breaking bad routines and building lasting good habits through small, consistent changes."
+    },
+    {
+        "id": 2,
+        "title": "48 Laws of Power",
+        "content": "This book is a bestselling book by Robert Greene that provides a guide to understanding and mastering power dynamics in various aspects of life."
+    },
+    {
+        "id": 3,
+        "title": "Think and Grow rich",
+        "content": "this book is a classic self-help book by Napoleon hill. It is based on Hill's research of wealthy and successful individials, including figures like Andrew Carnegie and Henry Ford."
+    }
+]
