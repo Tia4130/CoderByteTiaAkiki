@@ -8,3 +8,7 @@
     background-color: yellow;
     color: black; 
 }
+
+.bold-text{
+    font-weight: bold;
+}

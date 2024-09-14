@@ -12,6 +12,7 @@ import bookData from "../data/data.json";
 const Home = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [book, setBook] = useState([]);
+    const [totalMatches, setTotalMatches] = useState(0);
 
     //get the bookData:
     useEffect(() => {
@@ -30,17 +31,35 @@ const Home = () => {
         );
     };
 
+    const countMatches = (text, search) => {
+        if (!search) return 0;
+
+        const regex = new RegExp(`(${search})`, "gi");
+        const matches = text.match(regex);
+        return matches ? matches.length : 0;
+    };
+
     const filteredBooks = book.filter(
         book =>
             book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
             book.content.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    useEffect(() => {
+        let matches = 0;
+        filteredBooks.forEach(book => {
+            matches += countMatches(book.title, searchTerm);
+            matches += countMatches(book.content, searchTerm);
+        });
+        setTotalMatches(matches);
+    }, [searchTerm, filteredBooks]);
+
     return (
         <div>
             <h1 className='text-middle'>Search any book you want</h1>
             <div>
                 <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                <p className='text-middle'><span className='bold-text'>{totalMatches} posts </span> where found</p>
                 {filteredBooks.length > 0 ? (
                     filteredBooks.map(book => (
                         <div key={book.id} style={{ marginBottom: "20px" }}>

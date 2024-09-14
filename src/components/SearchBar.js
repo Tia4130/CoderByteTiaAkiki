@@ -4,6 +4,11 @@ import React from 'react'
 import "../css/searchBar.css";
 
 const SearchBar = ({ searchTerm, setSearchTerm }) => {
+
+    const clearSearch = () => {
+        setSearchTerm("");
+    };
+
     return (
         <div className='searchContainer'>
             <input
@@ -13,6 +18,11 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
                 onChange={e => setSearchTerm(e.target.value)}
                 className='searchBar'
             />
+            {searchTerm && (
+                <button onClick={clearSearch} className='clearButton'>
+                    &#x2715;
+                </button>
+            )}
         </div>
     )
 }
