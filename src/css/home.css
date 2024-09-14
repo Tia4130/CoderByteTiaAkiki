@@ -1,5 +1,10 @@
-.container{
-    justify-content: center;
+.text-middle{
     align-items: center;
     display: flex;
+    justify-content: center;
+}
+
+.highlightMark {
+    background-color: yellow;
+    color: black; 
 }

@@ -5,18 +5,13 @@ import "../css/searchBar.css";
 
 const SearchBar = ({ searchTerm, setSearchTerm }) => {
     return (
-        <div>
+        <div className='searchContainer'>
             <input
                 type='text'
                 placeholder='Search...'
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
-                style={{
-                    width: "100%",
-                    padding: "10px",
-                    marginBottom: "20px",
-                    fontSize: "16px"
-                }}
+                className='searchBar'
             />
         </div>
     )
